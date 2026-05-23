@@ -11,19 +11,19 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+<header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+    <div class="flex items-center justify-between h-16 sm:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center group-hover:bg-primary-600 transition-colors">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <a href="/" class="flex items-center gap-2 sm:gap-3 group min-w-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 bg-primary-500 rounded-lg flex items-center justify-center group-hover:bg-primary-600 transition-colors shrink-0">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
           </svg>
         </div>
-        <div>
-          <span class="text-lg font-bold text-slate-900 font-heading leading-tight block">Digitales Bildungswerk</span>
-          <span class="text-xs text-slate-500">Hildesheim</span>
+        <div class="min-w-0">
+          <span class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-tight block truncate">Digitales Bildungswerk</span>
+          <span class="text-xs text-slate-500 hidden sm:block">Hildesheim</span>
         </div>
       </a>
 
@@ -53,21 +53,24 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <button id="mobile-menu-btn" class="lg:hidden p-2.5 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 active:bg-slate-200 transition-colors" aria-label="Menu" aria-expanded="false">
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="lg:hidden hidden pb-4">
+    <div id="mobile-menu" class="lg:hidden hidden pb-6 pt-2">
       <div class="flex flex-col gap-1">
         {navItems.map((item) => (
           <a
             href={item.href}
             class:list={[
-              'px-4 py-3 rounded-lg text-sm font-medium transition-colors',
+              'px-4 py-3.5 rounded-xl text-base font-medium transition-colors active:bg-slate-100',
               currentPath === item.href
                 ? 'bg-primary-50 text-primary-700'
                 : 'text-slate-600 hover:bg-slate-50',
@@ -76,7 +79,7 @@ const currentPath = Astro.url.pathname;
             {item.label}
           </a>
         ))}
-        <a href="/kurse" class="mt-2 flex items-center justify-center gap-2 bg-primary-500 text-white px-5 py-3 rounded-lg text-sm font-semibold hover:bg-primary-600 transition-colors">
+        <a href="/kurse" class="mt-3 flex items-center justify-center gap-2 bg-primary-500 text-white px-5 py-3.5 rounded-xl text-base font-semibold hover:bg-primary-600 active:bg-primary-700 transition-colors">
           Kurs finden
         </a>
       </div>
@@ -87,7 +90,14 @@ const currentPath = Astro.url.pathname;
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
   btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
     menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
   });
 </script>
