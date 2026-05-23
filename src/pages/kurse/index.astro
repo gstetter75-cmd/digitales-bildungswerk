@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { kurse, kategorien, formate, zielgruppen } from '../../data/kurse';
+
+const iconMap: Record<string, string> = {
+  code: 'M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5',
+  terminal: 'M6.75 7.5l3 2.25-3 2.25m4.5 0h3M3.75 3.75h16.5v16.5H3.75z',
+  megaphone: 'M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46',
+  brain: 'M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18',
+  grid: 'M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z',
+  palette: 'M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z',
+  chart: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z',
+  users: 'M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z',
+  share: 'M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z',
+};
+---
+
+<BaseLayout title="Kursangebot" description="Alle Kurse und Weiterbildungen des Digitalen Bildungswerks Hildesheim. Filtern Sie nach Kategorie, Format und Zielgruppe.">
+
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Kursangebot</h1>
+      <p class="text-lg text-slate-300 max-w-2xl">Finden Sie den passenden Kurs fuer Ihre Ziele. Alle Kurse mit Praxisbezug und erfahrenen Dozenten.</p>
+    </div>
+  </section>
+
+  <!-- Filter & Kurse -->
+  <section class="bg-slate-50 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Filter Bar -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 mb-10">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Suche</label>
+            <input id="search-input" type="text" placeholder="Kurs suchen..." class="w-full px-3 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Kategorie</label>
+            <select id="filter-kategorie" class="w-full px-3 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white">
+              <option value="">Alle Kategorien</option>
+              {Object.entries(kategorien).map(([key, label]) => (
+                <option value={key}>{label}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Format</label>
+            <select id="filter-format" class="w-full px-3 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white">
+              <option value="">Alle Formate</option>
+              {Object.entries(formate).map(([key, label]) => (
+                <option value={key}>{label}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Zielgruppe</label>
+            <select id="filter-zielgruppe" class="w-full px-3 py-2.5 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white">
+              <option value="">Alle Zielgruppen</option>
+              {Object.entries(zielgruppen).map(([key, label]) => (
+                <option value={key}>{label}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kurs-Grid -->
+      <div id="kurs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {kurse.map((kurs) => (
+          <a
+            href={`/kurse/${kurs.slug}`}
+            class="kurs-card group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-primary-200 transition-all"
+            data-kategorie={kurs.kategorie}
+            data-format={kurs.format}
+            data-zielgruppe={kurs.zielgruppe}
+            data-title={kurs.title.toLowerCase()}
+            data-desc={kurs.description.toLowerCase()}
+          >
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-medium text-primary-300 bg-primary-500/10 px-3 py-1 rounded-full">{kategorien[kurs.kategorie]}</span>
+                {kurs.bildungsgutschein && (
+                  <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Foerderbar</span>
+                )}
+              </div>
+              <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={iconMap[kurs.icon]} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-white">{kurs.title}</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-slate-500 text-sm leading-relaxed mb-4">{kurs.description}</p>
+              <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center gap-4 text-slate-400">
+                  <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    {kurs.dauer}
+                  </span>
+                  <span class="capitalize">{kurs.format}</span>
+                </div>
+                <span class="font-bold text-slate-900">{kurs.preis.toLocaleString('de-DE')} EUR</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p id="no-results" class="hidden text-center text-slate-500 py-16 text-lg">Keine Kurse gefunden. Bitte aendern Sie Ihre Filterkriterien.</p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const filterKategorie = document.getElementById('filter-kategorie') as HTMLSelectElement;
+  const filterFormat = document.getElementById('filter-format') as HTMLSelectElement;
+  const filterZielgruppe = document.getElementById('filter-zielgruppe') as HTMLSelectElement;
+  const cards = document.querySelectorAll('.kurs-card') as NodeListOf<HTMLElement>;
+  const noResults = document.getElementById('no-results');
+
+  function filterKurse() {
+    const search = searchInput.value.toLowerCase();
+    const kategorie = filterKategorie.value;
+    const format = filterFormat.value;
+    const zielgruppe = filterZielgruppe.value;
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const matchSearch = !search || card.dataset.title?.includes(search) || card.dataset.desc?.includes(search);
+      const matchKategorie = !kategorie || card.dataset.kategorie === kategorie;
+      const matchFormat = !format || card.dataset.format === format;
+      const matchZielgruppe = !zielgruppe || card.dataset.zielgruppe === zielgruppe || card.dataset.zielgruppe === 'alle';
+
+      const visible = matchSearch && matchKategorie && matchFormat && matchZielgruppe;
+      card.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    if (noResults) {
+      noResults.classList.toggle('hidden', visibleCount > 0);
+    }
+  }
+
+  searchInput?.addEventListener('input', filterKurse);
+  filterKategorie?.addEventListener('change', filterKurse);
+  filterFormat?.addEventListener('change', filterKurse);
+  filterZielgruppe?.addEventListener('change', filterKurse);
+</script>

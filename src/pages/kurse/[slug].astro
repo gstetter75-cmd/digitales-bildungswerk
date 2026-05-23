@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { kurse, kategorien, formate, zielgruppen } from '../../data/kurse';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return kurse.map((kurs) => ({
+    params: { slug: kurs.slug },
+    props: { kurs },
+  }));
+};
+
+const { kurs } = Astro.props;
+
+const terminDate = new Date(kurs.naechsterTermin);
+const terminFormatted = terminDate.toLocaleDateString('de-DE', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={kurs.title} description={kurs.description}>
+
+  <!-- Breadcrumb + Header -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-2 text-sm text-slate-400 mb-6">
+        <a href="/" class="hover:text-slate-200 transition-colors">Startseite</a>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+        <a href="/kurse" class="hover:text-slate-200 transition-colors">Kursangebot</a>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+        <span class="text-slate-200">{kurs.title}</span>
+      </nav>
+      <div class="flex flex-wrap gap-3 mb-4">
+        <span class="text-xs font-medium text-primary-300 bg-primary-500/10 px-3 py-1 rounded-full">{kategorien[kurs.kategorie]}</span>
+        <span class="text-xs font-medium text-slate-300 bg-white/10 px-3 py-1 rounded-full capitalize">{formate[kurs.format]}</span>
+        {kurs.bildungsgutschein && (
+          <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Mit Bildungsgutschein</span>
+        )}
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">{kurs.title}</h1>
+      <p class="text-lg text-slate-300 max-w-3xl">{kurs.description}</p>
+    </div>
+  </section>
+
+  <section class="bg-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <div class="prose prose-slate max-w-none">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Kursbeschreibung</h2>
+            <p class="text-slate-600 leading-relaxed text-lg">{kurs.longDescription}</p>
+          </div>
+
+          <div class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Das lernen Sie</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              {kurs.highlights.map((highlight) => (
+                <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+                  <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span class="text-slate-700 font-medium">{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Zielgruppe</h2>
+            <p class="text-slate-600">Dieser Kurs richtet sich an: <strong>{zielgruppen[kurs.zielgruppe]}</strong></p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="sticky top-24 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-6 text-white">
+              <p class="text-3xl font-extrabold">{kurs.preis.toLocaleString('de-DE')} EUR</p>
+              <p class="text-primary-100 text-sm mt-1">inkl. Lehrmaterial & Zertifikat</p>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                <div>
+                  <p class="text-xs text-slate-400">Naechster Start</p>
+                  <p class="text-sm font-semibold text-slate-900">{terminFormatted}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <div>
+                  <p class="text-xs text-slate-400">Dauer</p>
+                  <p class="text-sm font-semibold text-slate-900">{kurs.dauer}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                </svg>
+                <div>
+                  <p class="text-xs text-slate-400">Format</p>
+                  <p class="text-sm font-semibold text-slate-900 capitalize">{formate[kurs.format]}</p>
+                </div>
+              </div>
+              {kurs.bildungsgutschein && (
+                <div class="flex items-center gap-3 bg-emerald-50 rounded-lg p-3">
+                  <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  <span class="text-sm font-medium text-emerald-700">Bildungsgutschein moeglich</span>
+                </div>
+              )}
+              <hr class="border-slate-200" />
+              <button
+                id="book-btn"
+                data-kurs-slug={kurs.slug}
+                data-kurs-title={kurs.title}
+                data-kurs-preis={kurs.preis}
+                class="w-full bg-primary-500 text-white py-3.5 rounded-xl font-semibold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/25"
+              >
+                Jetzt buchen
+              </button>
+              <a href="/kontakt" class="block text-center text-sm text-slate-500 hover:text-primary-600 transition-colors">
+                Oder: Kostenlose Beratung anfragen
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  const bookBtn = document.getElementById('book-btn');
+  bookBtn?.addEventListener('click', async () => {
+    const slug = bookBtn.dataset.kursSlug;
+    const title = bookBtn.dataset.kursTitle;
+    const preis = bookBtn.dataset.kursPreis;
+
+    bookBtn.textContent = 'Wird geladen...';
+    bookBtn.setAttribute('disabled', 'true');
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug, title, preis: Number(preis) }),
+      });
+
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL received');
+      }
+    } catch {
+      alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es spaeter erneut oder kontaktieren Sie uns direkt.');
+      bookBtn.textContent = 'Jetzt buchen';
+      bookBtn.removeAttribute('disabled');
+    }
+  });
+</script>

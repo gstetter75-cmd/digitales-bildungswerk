@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { kurse, kategorien } from '../data/kurse';
+
+const featuredKurse = kurse.slice(0, 3);
+
+const stats = [
+  { value: '500+', label: 'Absolventen' },
+  { value: '50+', label: 'Kurse & Workshops' },
+  { value: '98%', label: 'Zufriedenheit' },
+  { value: '15+', label: 'Dozenten' },
+];
+
+const foerderungen = [
+  { title: 'Bildungsgutschein', desc: 'Viele unserer Kurse sind AZAV-zertifiziert und koennen mit einem Bildungsgutschein der Agentur fuer Arbeit gefoerdert werden.' },
+  { title: 'Bildungspraemie', desc: 'Erhalten Sie bis zu 50% Foerderung fuer Ihre Weiterbildung mit der Bildungspraemie des Bundes.' },
+  { title: 'Aufstiegs-BAFoeG', desc: 'Nutzen Sie das Aufstiegs-BAFoeG fuer berufliche Aufstiegsfortbildungen mit attraktiven Zueschuessen.' },
+];
+
+const iconMap: Record<string, string> = {
+  code: 'M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5',
+  terminal: 'M6.75 7.5l3 2.25-3 2.25m4.5 0h3M3.75 3.75h16.5v16.5H3.75z',
+  megaphone: 'M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46',
+};
+---
+
+<BaseLayout title="Startseite" description="Digitales Bildungswerk Hildesheim – Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. AZAV-zertifiziert. Mit Bildungsgutschein moeglich.">
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-500/20 text-primary-300 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+          </svg>
+          AZAV-zertifizierter Bildungstraeger
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          Ihre digitale Zukunft<br />
+          <span class="text-primary-400">beginnt hier.</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl">
+          Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. Fuer Privatpersonen, Unternehmen und Arbeitssuchende in Hildesheim und online.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
+            Kurse entdecken
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
+            Beratung anfragen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <p class="text-3xl sm:text-4xl font-extrabold text-primary-500">{stat.value}</p>
+            <p class="text-sm text-slate-500 mt-1">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Zielgruppen -->
+  <section class="bg-slate-50 py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Fuer wen wir da sind</h2>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto">Massgeschneiderte Bildungsangebote fuer jede Situation</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/kurse" class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-primary-200">
+          <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-100 transition-colors">
+            <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Privatpersonen</h3>
+          <p class="text-slate-500 leading-relaxed">Erweitern Sie Ihre digitalen Kompetenzen und sichern Sie sich neue Karrierechancen mit unseren Kursen und Workshops.</p>
+        </a>
+
+        <a href="/unternehmen" class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-primary-200">
+          <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-100 transition-colors">
+            <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Unternehmen</h3>
+          <p class="text-slate-500 leading-relaxed">Individuelle Firmenschulungen, Inhouse-Workshops und Beratung fuer die digitale Transformation Ihres Unternehmens.</p>
+        </a>
+
+        <a href="/arbeitssuchende" class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-primary-200">
+          <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-100 transition-colors">
+            <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Arbeitssuchende</h3>
+          <p class="text-slate-500 leading-relaxed">Gefoerderte Weiterbildung mit Bildungsgutschein. Starten Sie in eine neue Karriere mit gefragten digitalen Skills.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kurs-Highlights -->
+  <section class="bg-white py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2">Beliebte Kurse</h2>
+          <p class="text-lg text-slate-500">Starten Sie mit unseren meistgebuchten Weiterbildungen</p>
+        </div>
+        <a href="/kurse" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+          Alle Kurse ansehen
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredKurse.map((kurs) => (
+          <a href={`/kurse/${kurs.slug}`} class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-primary-200 transition-all">
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-medium text-primary-300 bg-primary-500/10 px-3 py-1 rounded-full">{kategorien[kurs.kategorie]}</span>
+                {kurs.bildungsgutschein && (
+                  <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Foerderbar</span>
+                )}
+              </div>
+              <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={iconMap[kurs.icon]} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-white">{kurs.title}</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-slate-500 text-sm leading-relaxed mb-4">{kurs.description}</p>
+              <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center gap-4 text-slate-400">
+                  <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    {kurs.dauer}
+                  </span>
+                  <span class="capitalize">{kurs.format}</span>
+                </div>
+                <span class="font-bold text-slate-900">{kurs.preis.toLocaleString('de-DE')} EUR</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Foerdermoeglichkeiten -->
+  <section class="bg-primary-500 py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Foerdermoeglichkeiten</h2>
+        <p class="text-lg text-primary-100 max-w-2xl mx-auto">Ihre Weiterbildung kann gefoerdert werden – wir beraten Sie gerne zu den Moeglichkeiten</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {foerderungen.map((f) => (
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">{f.title}</h3>
+            <p class="text-primary-100 leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/arbeitssuchende" class="inline-flex items-center gap-2 bg-white text-primary-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-50 transition-all">
+          Mehr zu Foerderungen
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-white py-20 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">Bereit fuer Ihre digitale Zukunft?</h2>
+      <p class="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">Lassen Sie sich kostenlos und unverbindlich beraten. Gemeinsam finden wir den passenden Kurs fuer Ihre Ziele.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
+          Kostenlose Beratung
+        </a>
+        <a href="tel:+4951211234567" class="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-slate-200 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+          05121 / 123 456 7
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-slate-900 mb-3">Newsletter</h2>
+      <p class="text-slate-500 mb-6">Erhalten Sie Updates zu neuen Kursen und Angeboten</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" netlify name="newsletter">
+        <input type="email" name="email" required placeholder="Ihre E-Mail-Adresse" class="flex-1 px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
+        <button type="submit" class="bg-primary-500 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-600 transition-colors">
+          Anmelden
+        </button>
+      </form>
+      <p class="text-xs text-slate-400 mt-3">Mit der Anmeldung stimmen Sie unserer <a href="/datenschutz" class="underline">Datenschutzerklaerung</a> zu.</p>
+    </div>
+  </section>
+
+</BaseLayout>
