@@ -64,12 +64,17 @@ const iconMap: Record<string, string> = {
 
 <BaseLayout title="Startseite" description="Digitales Bildungswerk Hildesheim – Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. AZAV-zertifiziert. Mit Bildungsgutschein möglich.">
 
-  <!-- Hero Section (Split Layout) -->
-  <section class="bg-slate-900 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Hero Section -->
+  <section class="relative bg-slate-900 overflow-hidden">
+    <!-- Mobile: Vollbild-Hintergrund -->
+    <div class="hero-mobile-bg lg:hidden">
+      <img src="/images/hero-collaboration.jpg" alt="" loading="eager" />
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center py-16 sm:py-20 lg:py-24">
         <!-- Text -->
-        <div>
+        <div class="relative z-10">
           <div class="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-500/20 text-primary-300 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
@@ -85,7 +90,7 @@ const iconMap: Record<string, string> = {
           </p>
 
           <!-- Trust Badges -->
-          <div class="flex flex-wrap gap-x-6 gap-y-2 mb-10">
+          <div class="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 mb-10">
             {trustBadges.map((badge) => (
               <span class="flex items-center gap-1.5 text-sm text-slate-300">
                 <svg class="w-4 h-4 text-primary-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -96,20 +101,20 @@ const iconMap: Record<string, string> = {
             ))}
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 active:bg-primary-700 transition-all shadow-lg shadow-primary-500/25">
               Kurse entdecken
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </a>
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 active:bg-white/30 transition-all">
               Kostenlose Beratung
             </a>
           </div>
         </div>
 
-        <!-- Hero Image -->
+        <!-- Desktop: Bild rechts -->
         <div class="hidden lg:block">
           <div class="relative">
             <div class="absolute -inset-4 bg-primary-500/20 rounded-3xl blur-2xl"></div>
@@ -124,6 +129,11 @@ const iconMap: Record<string, string> = {
       </div>
     </div>
   </section>
+
+  <!-- Mobile: Bild-Streifen unter dem Hero -->
+  <div class="lg:hidden">
+    <img src="/images/hero-collaboration.jpg" alt="Team bei einer digitalen Weiterbildung" class="w-full h-48 sm:h-56 object-cover" loading="eager" />
+  </div>
 
   <!-- Stats -->
   <section class="bg-white border-b border-slate-100">

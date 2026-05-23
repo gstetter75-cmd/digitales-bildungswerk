@@ -57,6 +57,37 @@ const canonicalUrl = Astro.url.href;
       <slot />
     </main>
     <Footer />
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 mobile-cta-bar" id="mobile-cta">
+      <div class="flex gap-3 px-4 py-3">
+        <a href="/kurse" class="flex-1 inline-flex items-center justify-center gap-2 bg-primary-500 text-white py-3 rounded-xl text-sm font-semibold hover:bg-primary-600 active:bg-primary-700 transition-colors shadow-sm">
+          Kurse entdecken
+        </a>
+        <a href="tel:+4951211234567" class="inline-flex items-center justify-center bg-slate-100 text-slate-700 px-4 py-3 rounded-xl hover:bg-slate-200 active:bg-slate-300 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
     <CookieBanner />
+
+    <script>
+      // Hide mobile CTA bar when cookie banner is visible
+      const cookieBanner = document.getElementById('cookie-banner');
+      const mobileCta = document.getElementById('mobile-cta');
+      if (cookieBanner && mobileCta && !cookieBanner.classList.contains('hidden')) {
+        mobileCta.style.display = 'none';
+      }
+      // Show CTA bar when cookie banner is dismissed
+      document.getElementById('cookie-accept')?.addEventListener('click', () => {
+        if (mobileCta) mobileCta.style.display = '';
+      });
+      document.getElementById('cookie-reject')?.addEventListener('click', () => {
+        if (mobileCta) mobileCta.style.display = '';
+      });
+    </script>
   </body>
 </html>
