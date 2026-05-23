@@ -10,6 +10,8 @@ interface Props {
 }
 
 const { title, description = 'Digitales Bildungswerk Hildesheim – Ihr Partner für digitale Weiterbildung, Kurse und Workshops.' } = Astro.props;
+const fullTitle = `${title} | Digitales Bildungswerk Hildesheim`;
+const canonicalUrl = Astro.url.href;
 ---
 
 <!doctype html>
@@ -21,16 +23,37 @@ const { title, description = 'Digitales Bildungswerk Hildesheim – Ihr Partner 
     <meta name="theme-color" content="#F97316" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="/images/hero-collaboration.jpg" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Digitales Bildungswerk Hildesheim" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/hero-collaboration.jpg" />
+
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-    <title>{title} | Digitales Bildungswerk Hildesheim</title>
+    <title>{fullTitle}</title>
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- Skip to content (Accessibility) -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">
+      Zum Inhalt springen
+    </a>
     <Header />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer />

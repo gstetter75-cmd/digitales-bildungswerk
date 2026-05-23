@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Seite nicht gefunden" description="Die angeforderte Seite konnte nicht gefunden werden.">
+  <section class="bg-white py-32 lg:py-40">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-7xl sm:text-8xl font-extrabold text-primary-500 mb-4">404</p>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4">Seite nicht gefunden</h1>
+      <p class="text-lg text-slate-500 mb-10">Die Seite, die Sie suchen, existiert leider nicht oder wurde verschoben.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all">
+          Zur Startseite
+        </a>
+        <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-slate-200 transition-all">
+          Kurse ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
