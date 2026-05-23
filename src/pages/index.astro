@@ -11,10 +11,48 @@ const stats = [
   { value: '15+', label: 'Dozenten' },
 ];
 
-const foerderungen = [
-  { title: 'Bildungsgutschein', desc: 'Viele unserer Kurse sind AZAV-zertifiziert und koennen mit einem Bildungsgutschein der Agentur fuer Arbeit gefoerdert werden.' },
-  { title: 'Bildungspraemie', desc: 'Erhalten Sie bis zu 50% Foerderung fuer Ihre Weiterbildung mit der Bildungspraemie des Bundes.' },
-  { title: 'Aufstiegs-BAFoeG', desc: 'Nutzen Sie das Aufstiegs-BAFoeG fuer berufliche Aufstiegsfortbildungen mit attraktiven Zueschuessen.' },
+const trustBadges = [
+  'AZAV-zertifiziert',
+  'Bis zu 100 % gefördert',
+  'Berufsbegleitend möglich',
+  'Praxiserfahrene Dozenten',
+];
+
+const förderungen = [
+  { title: 'Bildungsgutschein', desc: 'Viele unserer Kurse sind AZAV-zertifiziert und können mit einem Bildungsgutschein der Agentur für Arbeit gefördert werden.' },
+  { title: 'Bildungsprämie', desc: 'Erhalten Sie bis zu 50 % Förderung für Ihre Weiterbildung mit der Bildungsprämie des Bundes.' },
+  { title: 'Aufstiegs-BAföG', desc: 'Nutzen Sie das Aufstiegs-BAföG für berufliche Aufstiegsfortbildungen mit attraktiven Zuschüssen.' },
+];
+
+const prozess = [
+  { nr: '01', title: 'Kostenlose Beratung', desc: 'Wir analysieren Ihren Bedarf und empfehlen den passenden Kurs.' },
+  { nr: '02', title: 'Förderung klären', desc: 'Wir prüfen Ihre Fördermöglichkeiten und helfen bei der Antragstellung.' },
+  { nr: '03', title: 'Kurs starten', desc: 'Sie starten Ihre Weiterbildung – präsenz, online oder hybrid.' },
+  { nr: '04', title: 'Zertifikat erhalten', desc: 'Nach erfolgreichem Abschluss erhalten Sie Ihr anerkanntes Zertifikat.' },
+];
+
+const testimonials = [
+  { name: 'Sandra M.', rolle: 'Marketing-Leiterin', firma: 'Mittelständisches Handelsunternehmen', text: 'Dank des Digital-Marketing-Kurses haben wir unsere Online-Sichtbarkeit um 150 % gesteigert. Die praxisnahen Inhalte konnte ich sofort im Alltag anwenden.', ergebnis: '+150 % Online-Sichtbarkeit' },
+  { name: 'Thomas K.', rolle: 'Quereinsteiger', firma: 'Ehemals arbeitsuchend', text: 'Der Python-Kurs war mein Sprungbrett in die IT. Drei Wochen nach dem Zertifikat hatte ich meinen ersten Job als Junior Developer. 100 % gefördert über den Bildungsgutschein.', ergebnis: 'Job nach 3 Wochen' },
+  { name: 'Dr. Petra W.', rolle: 'Geschäftsführerin', firma: 'Beratungsunternehmen, 35 MA', text: 'Die Inhouse-Schulung zu KI-Tools hat die Produktivität meines Teams messbar verbessert. Hervorragende Dozenten mit echtem Praxisbezug.', ergebnis: '30 % Zeitersparnis' },
+];
+
+const faqs = [
+  { frage: 'Welche Vorkenntnisse brauche ich?', antwort: 'Die meisten unserer Kurse sind für Einsteiger konzipiert. Bei fortgeschrittenen Kursen geben wir die Voraussetzungen auf der Kursseite an. Im Zweifelsfall beraten wir Sie gerne kostenlos.' },
+  { frage: 'Kann ich die Weiterbildung neben dem Beruf machen?', antwort: 'Ja, viele unserer Kurse sind berufsbegleitend konzipiert. Wir bieten Abend- und Wochenendkurse sowie flexible Online-Formate an.' },
+  { frage: 'Wie funktioniert die Förderung mit Bildungsgutschein?', antwort: 'Beantragen Sie einen Bildungsgutschein bei Ihrer Agentur für Arbeit oder dem Jobcenter. Damit übernimmt der Staat bis zu 100 % der Kursgebühren. Wir unterstützen Sie beim gesamten Antragsprozess.' },
+  { frage: 'Erhalte ich ein Zertifikat?', antwort: 'Ja, nach erfolgreichem Abschluss jedes Kurses erhalten Sie ein anerkanntes Zertifikat des Digitalen Bildungswerks Hildesheim. Bei AZAV-zertifizierten Kursen ist dieses auch bei Arbeitgebern und der Agentur für Arbeit anerkannt.' },
+  { frage: 'Bieten Sie auch Firmenschulungen an?', antwort: 'Ja, wir bieten maßgeschneiderte Inhouse-Schulungen und Team-Workshops an. Inhalte, Dauer und Termine passen wir individuell an Ihr Unternehmen an. Fordern Sie ein unverbindliches Angebot an.' },
+  { frage: 'Kann ich den Kurs auch online absolvieren?', antwort: 'Viele unserer Kurse sind als Präsenz-, Online- oder Hybrid-Format verfügbar. Auf der jeweiligen Kursseite sehen Sie die verfügbaren Formate.' },
+];
+
+const partner = [
+  'IHK Hildesheim',
+  'Agentur für Arbeit',
+  'Handwerkskammer',
+  'Universität Hildesheim',
+  'Stadtwerke Hildesheim',
+  'VHS Hildesheim',
 ];
 
 const iconMap: Record<string, string> = {
@@ -24,7 +62,7 @@ const iconMap: Record<string, string> = {
 };
 ---
 
-<BaseLayout title="Startseite" description="Digitales Bildungswerk Hildesheim – Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. AZAV-zertifiziert. Mit Bildungsgutschein moeglich.">
+<BaseLayout title="Startseite" description="Digitales Bildungswerk Hildesheim – Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. AZAV-zertifiziert. Mit Bildungsgutschein möglich.">
 
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
@@ -38,15 +76,28 @@ const iconMap: Record<string, string> = {
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
           </svg>
-          AZAV-zertifizierter Bildungstraeger
+          AZAV-zertifizierter Bildungsträger
         </div>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
           Ihre digitale Zukunft<br />
           <span class="text-primary-400">beginnt hier.</span>
         </h1>
-        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl">
-          Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. Fuer Privatpersonen, Unternehmen und Arbeitssuchende in Hildesheim und online.
+        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl">
+          Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. Für Privatpersonen, Unternehmen und Arbeitssuchende in Hildesheim und online.
         </p>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap gap-x-6 gap-y-2 mb-10">
+          {trustBadges.map((badge) => (
+            <span class="flex items-center gap-1.5 text-sm text-slate-300">
+              <svg class="w-4 h-4 text-primary-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              {badge}
+            </span>
+          ))}
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
             Kurse entdecken
@@ -55,7 +106,7 @@ const iconMap: Record<string, string> = {
             </svg>
           </a>
           <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
-            Beratung anfragen
+            Kostenlose Beratung
           </a>
         </div>
       </div>
@@ -80,8 +131,8 @@ const iconMap: Record<string, string> = {
   <section class="bg-slate-50 py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Fuer wen wir da sind</h2>
-        <p class="text-lg text-slate-500 max-w-2xl mx-auto">Massgeschneiderte Bildungsangebote fuer jede Situation</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Für wen wir da sind</h2>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto">Maßgeschneiderte Bildungsangebote für jede Situation</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         <a href="/kurse" class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-primary-200">
@@ -93,7 +144,6 @@ const iconMap: Record<string, string> = {
           <h3 class="text-xl font-bold text-slate-900 mb-3">Privatpersonen</h3>
           <p class="text-slate-500 leading-relaxed">Erweitern Sie Ihre digitalen Kompetenzen und sichern Sie sich neue Karrierechancen mit unseren Kursen und Workshops.</p>
         </a>
-
         <a href="/unternehmen" class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-primary-200">
           <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-100 transition-colors">
             <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -101,9 +151,8 @@ const iconMap: Record<string, string> = {
             </svg>
           </div>
           <h3 class="text-xl font-bold text-slate-900 mb-3">Unternehmen</h3>
-          <p class="text-slate-500 leading-relaxed">Individuelle Firmenschulungen, Inhouse-Workshops und Beratung fuer die digitale Transformation Ihres Unternehmens.</p>
+          <p class="text-slate-500 leading-relaxed">Individuelle Firmenschulungen, Inhouse-Workshops und Beratung für die digitale Transformation Ihres Unternehmens.</p>
         </a>
-
         <a href="/arbeitssuchende" class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 hover:border-primary-200">
           <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-100 transition-colors">
             <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -111,7 +160,7 @@ const iconMap: Record<string, string> = {
             </svg>
           </div>
           <h3 class="text-xl font-bold text-slate-900 mb-3">Arbeitssuchende</h3>
-          <p class="text-slate-500 leading-relaxed">Gefoerderte Weiterbildung mit Bildungsgutschein. Starten Sie in eine neue Karriere mit gefragten digitalen Skills.</p>
+          <p class="text-slate-500 leading-relaxed">Geförderte Weiterbildung mit Bildungsgutschein. Starten Sie in eine neue Karriere mit gefragten digitalen Skills.</p>
         </a>
       </div>
     </div>
@@ -139,7 +188,7 @@ const iconMap: Record<string, string> = {
               <div class="flex items-center justify-between mb-4">
                 <span class="text-xs font-medium text-primary-300 bg-primary-500/10 px-3 py-1 rounded-full">{kategorien[kurs.kategorie]}</span>
                 {kurs.bildungsgutschein && (
-                  <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Foerderbar</span>
+                  <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Förderbar</span>
                 )}
               </div>
               <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4">
@@ -161,7 +210,7 @@ const iconMap: Record<string, string> = {
                   </span>
                   <span class="capitalize">{kurs.format}</span>
                 </div>
-                <span class="font-bold text-slate-900">{kurs.preis.toLocaleString('de-DE')} EUR</span>
+                <span class="font-bold text-slate-900">{kurs.preis.toLocaleString('de-DE')} €</span>
               </div>
             </div>
           </a>
@@ -170,15 +219,42 @@ const iconMap: Record<string, string> = {
     </div>
   </section>
 
-  <!-- Foerdermoeglichkeiten -->
+  <!-- So läuft's bei uns -->
+  <section class="bg-slate-50 py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">So läuft's bei uns</h2>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto">In vier Schritten zu Ihrer Weiterbildung – wir begleiten Sie von Anfang bis Ende</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {prozess.map((step, i) => (
+          <div class="relative">
+            {i < 3 && <div class="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-primary-200 -translate-x-1/2 z-0"></div>}
+            <div class="relative z-10 text-center">
+              <div class="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-xl font-extrabold text-white shadow-lg shadow-primary-500/25">
+                {step.nr}
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <p class="text-sm text-slate-400">Antwort in &lt; 24 h &middot; Kostenlos &middot; Unverbindlich</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fördermöglichkeiten -->
   <section class="bg-primary-500 py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Foerdermoeglichkeiten</h2>
-        <p class="text-lg text-primary-100 max-w-2xl mx-auto">Ihre Weiterbildung kann gefoerdert werden – wir beraten Sie gerne zu den Moeglichkeiten</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Bis zu 100 % der Kosten übernimmt der Staat</h2>
+        <p class="text-lg text-primary-100 max-w-2xl mx-auto">Gemäß § 82 SGB III fördert die Agentur für Arbeit berufliche Weiterbildung – wir helfen beim Antrag</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        {foerderungen.map((f) => (
+        {förderungen.map((f) => (
           <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-6">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -190,33 +266,103 @@ const iconMap: Record<string, string> = {
           </div>
         ))}
       </div>
-      <div class="text-center mt-12">
+      <div class="text-center mt-12 flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/arbeitssuchende" class="inline-flex items-center gap-2 bg-white text-primary-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-50 transition-all">
-          Mehr zu Foerderungen
+          Förderung prüfen
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
+        </a>
+        <a href="/kontakt" class="inline-flex items-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
+          Beratung vereinbaren
         </a>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Testimonials -->
   <section class="bg-white py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Das sagen unsere Teilnehmer</h2>
+        <p class="text-lg text-slate-500">Echte Ergebnisse von echten Menschen</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {testimonials.map((t) => (
+          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+            <div class="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-xs font-bold mb-4">
+              {t.ergebnis}
+            </div>
+            <p class="text-slate-600 leading-relaxed mb-6 italic">"{t.text}"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center">
+                <span class="text-sm font-bold text-white">{t.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900">{t.name}</p>
+                <p class="text-xs text-slate-400">{t.rolle}, {t.firma}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner -->
+  <section class="bg-slate-50 py-12 border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-sm text-slate-400 mb-8">Vertraut von Unternehmen und Institutionen in der Region</p>
+      <div class="flex flex-wrap justify-center gap-8 lg:gap-16">
+        {partner.map((p) => (
+          <div class="flex items-center justify-center">
+            <span class="text-slate-300 font-bold text-lg tracking-wide">{p}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-20 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Häufige Fragen</h2>
+        <p class="text-lg text-slate-500">Antworten auf die wichtigsten Fragen rund um unsere Weiterbildungen</p>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-left font-semibold text-slate-900 hover:bg-slate-100 transition-colors">
+              {faq.frage}
+              <svg class="w-5 h-5 text-slate-400 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">{faq.antwort}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-20 lg:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">Bereit fuer Ihre digitale Zukunft?</h2>
-      <p class="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">Lassen Sie sich kostenlos und unverbindlich beraten. Gemeinsam finden wir den passenden Kurs fuer Ihre Ziele.</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Bereit für Ihre digitale Zukunft?</h2>
+      <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">Lassen Sie sich kostenlos und unverbindlich beraten. Gemeinsam finden wir den passenden Kurs für Ihre Ziele.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
           Kostenlose Beratung
         </a>
-        <a href="tel:+4951211234567" class="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-slate-200 transition-all">
+        <a href="tel:+4951211234567" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
           </svg>
           05121 / 123 456 7
         </a>
       </div>
+      <p class="text-sm text-slate-400 mt-6">Antwort in &lt; 24 h &middot; Kostenlos &middot; Unverbindlich</p>
     </div>
   </section>
 
@@ -231,7 +377,7 @@ const iconMap: Record<string, string> = {
           Anmelden
         </button>
       </form>
-      <p class="text-xs text-slate-400 mt-3">Mit der Anmeldung stimmen Sie unserer <a href="/datenschutz" class="underline">Datenschutzerklaerung</a> zu.</p>
+      <p class="text-xs text-slate-400 mt-3">Mit der Anmeldung stimmen Sie unserer <a href="/datenschutz" class="underline">Datenschutzerklärung</a> zu.</p>
     </div>
   </section>
 

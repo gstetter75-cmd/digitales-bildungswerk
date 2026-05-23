@@ -12,7 +12,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 const { kurs } = Astro.props;
 
-const terminDate = new Date(kurs.naechsterTermin);
+const terminDate = new Date(kurs.nächsterTermin);
 const terminFormatted = terminDate.toLocaleDateString('de-DE', {
   day: '2-digit',
   month: 'long',
@@ -78,7 +78,7 @@ const terminFormatted = terminDate.toLocaleDateString('de-DE', {
         <div class="lg:col-span-1">
           <div class="sticky top-24 bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
             <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-6 text-white">
-              <p class="text-3xl font-extrabold">{kurs.preis.toLocaleString('de-DE')} EUR</p>
+              <p class="text-3xl font-extrabold">{kurs.preis.toLocaleString('de-DE')} €</p>
               <p class="text-primary-100 text-sm mt-1">inkl. Lehrmaterial & Zertifikat</p>
             </div>
             <div class="p-6 space-y-4">
@@ -87,7 +87,7 @@ const terminFormatted = terminDate.toLocaleDateString('de-DE', {
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                 </svg>
                 <div>
-                  <p class="text-xs text-slate-400">Naechster Start</p>
+                  <p class="text-xs text-slate-400">Nächster Start</p>
                   <p class="text-sm font-semibold text-slate-900">{terminFormatted}</p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ const terminFormatted = terminDate.toLocaleDateString('de-DE', {
                   <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
-                  <span class="text-sm font-medium text-emerald-700">Bildungsgutschein moeglich</span>
+                  <span class="text-sm font-medium text-emerald-700">Bildungsgutschein möglich</span>
                 </div>
               )}
               <hr class="border-slate-200" />
@@ -163,7 +163,7 @@ const terminFormatted = terminDate.toLocaleDateString('de-DE', {
         throw new Error('No checkout URL received');
       }
     } catch {
-      alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es spaeter erneut oder kontaktieren Sie uns direkt.');
+      alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.');
       bookBtn.textContent = 'Jetzt buchen';
       bookBtn.removeAttribute('disabled');
     }

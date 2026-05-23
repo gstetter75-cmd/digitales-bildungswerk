@@ -2,44 +2,44 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { kurse, kategorien } from '../data/kurse';
 
-const gefoerderteKurse = kurse.filter((k) => k.bildungsgutschein);
+const geförderteKurse = kurse.filter((k) => k.bildungsgutschein);
 
 const schritte = [
-  { nr: '1', title: 'Beratungsgespraech', desc: 'Vereinbaren Sie ein kostenloses Beratungsgespraech mit uns. Wir helfen Ihnen, den passenden Kurs zu finden.' },
-  { nr: '2', title: 'Bildungsgutschein beantragen', desc: 'Beantragen Sie einen Bildungsgutschein bei Ihrer Agentur fuer Arbeit oder Ihrem Jobcenter.' },
+  { nr: '1', title: 'Beratungsgespräch', desc: 'Vereinbaren Sie ein kostenloses Beratungsgespräch mit uns. Wir helfen Ihnen, den passenden Kurs zu finden.' },
+  { nr: '2', title: 'Bildungsgutschein beantragen', desc: 'Beantragen Sie einen Bildungsgutschein bei Ihrer Agentur für Arbeit oder Ihrem Jobcenter.' },
   { nr: '3', title: 'Kurs starten', desc: 'Nach Genehmigung starten Sie direkt mit Ihrem Kurs – ohne eigene Kosten.' },
-  { nr: '4', title: 'Karriere starten', desc: 'Mit Ihrem neuen Zertifikat und praxisnahen Skills sind Sie bereit fuer den Arbeitsmarkt.' },
+  { nr: '4', title: 'Karriere starten', desc: 'Mit Ihrem neuen Zertifikat und praxisnahen Skills sind Sie bereit für den Arbeitsmarkt.' },
 ];
 
-const foerderungen = [
+const förderungen = [
   {
     title: 'Bildungsgutschein (AZAV)',
-    desc: 'Die Agentur fuer Arbeit oder das Jobcenter uebernimmt die kompletten Kursgebuehren. Voraussetzung: AZAV-Zertifizierung des Kurses.',
-    details: ['100% Kostenuebernahme', 'Fuer Arbeitslose und von Arbeitslosigkeit Bedrohte', 'Auch Fahrtkosten koennen erstattet werden'],
+    desc: 'Die Agentur für Arbeit oder das Jobcenter übernimmt die kompletten Kursgebühren. Voraussetzung: AZAV-Zertifizierung des Kurses.',
+    details: ['100% Kostenübernahme', 'Für Arbeitslose und von Arbeitslosigkeit Bedrohte', 'Auch Fahrtkosten können erstattet werden'],
   },
   {
-    title: 'Bildungspraemie',
-    desc: 'Der Bund foerdert individuelle berufsbezogene Weiterbildung mit einem Praemiengutschein von bis zu 500 EUR.',
-    details: ['Bis zu 50% der Kursgebuehren', 'Fuer Erwerbstaetige mit geringem Einkommen', 'Einfache Beantragung'],
+    title: 'Bildungsprämie',
+    desc: 'Der Bund fördert individuelle berufsbezogene Weiterbildung mit einem Prämiengutschein von bis zu 500 €.',
+    details: ['Bis zu 50% der Kursgebühren', 'Für Erwerbstätige mit geringem Einkommen', 'Einfache Beantragung'],
   },
   {
-    title: 'Aufstiegs-BAFoeG',
-    desc: 'Foerderung fuer berufliche Aufstiegsfortbildungen. Zuschuss plus zinsgünstiges Darlehen.',
-    details: ['Bis zu 75% Zuschuss', 'Einkommensunabhaengig', 'Fuer Fortbildungsabschluesse'],
+    title: 'Aufstiegs-BAföG',
+    desc: 'Förderung für berufliche Aufstiegsfortbildungen. Zuschuss plus zinsgünstiges Darlehen.',
+    details: ['Bis zu 75% Zuschuss', 'Einkommensunabhängig', 'Für Fortbildungsabschlüsse'],
   },
 ];
 ---
 
-<BaseLayout title="Fuer Arbeitssuchende" description="Gefoerderte Weiterbildung mit Bildungsgutschein. AZAV-zertifizierte Kurse fuer Ihren Wiedereinstieg in den Arbeitsmarkt.">
+<BaseLayout title="Für Arbeitssuchende" description="Geförderte Weiterbildung mit Bildungsgutschein. AZAV-zertifizierte Kurse für Ihren Wiedereinstieg in den Arbeitsmarkt.">
 
   <!-- Header -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-        Bis zu 100% gefoerdert
+        Bis zu 100% gefördert
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Ihre neue Karriere<br />beginnt heute</h1>
-      <p class="text-lg text-slate-300 max-w-2xl">Nutzen Sie gefoerderte Weiterbildungen fuer Ihren Wiedereinstieg in den Arbeitsmarkt. Viele unserer Kurse sind mit Bildungsgutschein buchbar – komplett kostenfrei fuer Sie.</p>
+      <p class="text-lg text-slate-300 max-w-2xl">Nutzen Sie geförderte Weiterbildungen für Ihren Wiedereinstieg in den Arbeitsmarkt. Viele unserer Kurse sind mit Bildungsgutschein buchbar – komplett kostenfrei für Sie.</p>
     </div>
   </section>
 
@@ -47,7 +47,7 @@ const foerderungen = [
   <section class="bg-white py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold text-slate-900 mb-4 text-center">So funktioniert's</h2>
-      <p class="text-lg text-slate-500 text-center mb-16 max-w-2xl mx-auto">In vier einfachen Schritten zu Ihrer gefoerderten Weiterbildung</p>
+      <p class="text-lg text-slate-500 text-center mb-16 max-w-2xl mx-auto">In vier einfachen Schritten zu Ihrer geförderten Weiterbildung</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {schritte.map((s) => (
           <div class="text-center">
@@ -62,12 +62,12 @@ const foerderungen = [
     </div>
   </section>
 
-  <!-- Foerdermoeglichkeiten Detail -->
+  <!-- Fördermöglichkeiten Detail -->
   <section class="bg-slate-50 py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-extrabold text-slate-900 mb-12 text-center">Foerdermoeglichkeiten im Detail</h2>
+      <h2 class="text-3xl font-extrabold text-slate-900 mb-12 text-center">Fördermöglichkeiten im Detail</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        {foerderungen.map((f) => (
+        {förderungen.map((f) => (
           <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
             <h3 class="text-xl font-bold text-slate-900 mb-3">{f.title}</h3>
             <p class="text-slate-500 mb-6 leading-relaxed">{f.desc}</p>
@@ -87,23 +87,23 @@ const foerderungen = [
     </div>
   </section>
 
-  <!-- Gefoerderte Kurse -->
+  <!-- Geförderte Kurse -->
   <section class="bg-white py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold text-slate-900 mb-4 text-center">Kurse mit Bildungsgutschein</h2>
-      <p class="text-lg text-slate-500 text-center mb-12">Diese Kurse koennen Sie mit einem Bildungsgutschein besuchen</p>
+      <p class="text-lg text-slate-500 text-center mb-12">Diese Kurse können Sie mit einem Bildungsgutschein besuchen</p>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {gefoerderteKurse.map((kurs) => (
+        {geförderteKurse.map((kurs) => (
           <a href={`/kurse/${kurs.slug}`} class="group bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg hover:border-primary-200 transition-all">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-medium text-primary-600 bg-primary-50 px-3 py-1 rounded-full">{kategorien[kurs.kategorie]}</span>
-              <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Foerderbar</span>
+              <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Förderbar</span>
             </div>
             <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">{kurs.title}</h3>
             <p class="text-sm text-slate-500 mb-4">{kurs.description}</p>
             <div class="flex items-center justify-between text-sm text-slate-400">
               <span>{kurs.dauer}</span>
-              <span class="font-semibold text-slate-900">{kurs.preis.toLocaleString('de-DE')} EUR</span>
+              <span class="font-semibold text-slate-900">{kurs.preis.toLocaleString('de-DE')} €</span>
             </div>
           </a>
         ))}
@@ -114,8 +114,8 @@ const foerderungen = [
   <!-- CTA -->
   <section class="bg-primary-500 py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-extrabold text-white mb-4">Kostenlose Beratung zur Foerderung</h2>
-      <p class="text-lg text-primary-100 mb-8">Wir pruefen gemeinsam, welche Foerdermoeglichkeiten fuer Sie in Frage kommen.</p>
+      <h2 class="text-3xl font-extrabold text-white mb-4">Kostenlose Beratung zur Förderung</h2>
+      <p class="text-lg text-primary-100 mb-8">Wir prüfen gemeinsam, welche Fördermöglichkeiten für Sie in Frage kommen.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-50 transition-all">
           Beratung anfragen

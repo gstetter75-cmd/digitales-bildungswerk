@@ -2,29 +2,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const team = [
-  { name: 'Dr. Maria Schmidt', rolle: 'Geschaeftsfuehrung', bereich: 'Paedagogik & Strategie' },
-  { name: 'Thomas Mueller', rolle: 'Leiter Programmierung', bereich: 'Full-Stack Entwicklung' },
+  { name: 'Dr. Maria Schmidt', rolle: 'Geschäftsführung', bereich: 'Pädagogik & Strategie' },
+  { name: 'Thomas Müller', rolle: 'Leiter Programmierung', bereich: 'Full-Stack Entwicklung' },
   { name: 'Sarah Weber', rolle: 'Leiterin Marketing', bereich: 'Digital Marketing & SEO' },
   { name: 'Prof. Dr. Klaus Wagner', rolle: 'Dozent KI & Data', bereich: 'KI, Machine Learning' },
   { name: 'Lisa Hoffmann', rolle: 'Dozentin Design', bereich: 'UX/UI Design' },
-  { name: 'Jan Becker', rolle: 'Bildungsberatung', bereich: 'Foerderung & Beratung' },
+  { name: 'Jan Becker', rolle: 'Bildungsberatung', bereich: 'Förderung & Beratung' },
 ];
 
 const werte = [
   { title: 'Praxisnah', desc: 'Alle Kurse basieren auf realen Projekten und aktuellen Anforderungen aus der Wirtschaft.', icon: 'M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.049.58.025 1.194-.14 1.743' },
-  { title: 'Individuell', desc: 'Wir passen unsere Angebote an die Beduerfnisse und Vorkenntnisse jedes Teilnehmers an.', icon: 'M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z' },
-  { title: 'Zukunftsorientiert', desc: 'Unsere Curricula werden staendig aktualisiert und orientieren sich an den Anforderungen von morgen.', icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z' },
-  { title: 'Zertifiziert', desc: 'Als AZAV-zertifizierter Traeger garantieren wir hoechste Qualitaetsstandards bei allen Weiterbildungen.', icon: 'M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z' },
+  { title: 'Individuell', desc: 'Wir passen unsere Angebote an die Bedürfnisse und Vorkenntnisse jedes Teilnehmers an.', icon: 'M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z' },
+  { title: 'Zukunftsorientiert', desc: 'Unsere Curricula werden ständig aktualisiert und orientieren sich an den Anforderungen von morgen.', icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z' },
+  { title: 'Zertifiziert', desc: 'Als AZAV-zertifizierter Träger garantieren wir höchste Qualitätsstandards bei allen Weiterbildungen.', icon: 'M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z' },
 ];
 ---
 
-<BaseLayout title="Ueber uns" description="Lernen Sie das Team und die Mission des Digitalen Bildungswerks Hildesheim kennen.">
+<BaseLayout title="Über uns" description="Lernen Sie das Team und die Mission des Digitalen Bildungswerks Hildesheim kennen.">
 
   <!-- Header -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Ueber uns</h1>
-      <p class="text-lg text-slate-300 max-w-2xl">Wir sind ein Team aus erfahrenen Dozenten, Praktikern und Bildungsexperten mit einer gemeinsamen Mission: Digitale Kompetenzen fuer alle zugaenglich machen.</p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Über uns</h1>
+      <p class="text-lg text-slate-300 max-w-2xl">Wir sind ein Team aus erfahrenen Dozenten, Praktikern und Bildungsexperten mit einer gemeinsamen Mission: Digitale Kompetenzen für alle zugänglich machen.</p>
     </div>
   </section>
 
@@ -34,10 +34,10 @@ const werte = [
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Unsere Mission</h2>
         <p class="text-lg text-slate-600 leading-relaxed mb-4">
-          Das Digitale Bildungswerk Hildesheim wurde gegruendet, um Menschen und Unternehmen in der Region Hildesheim auf dem Weg in die digitale Zukunft zu begleiten.
+          Das Digitale Bildungswerk Hildesheim wurde gegründet, um Menschen und Unternehmen in der Region Hildesheim auf dem Weg in die digitale Zukunft zu begleiten.
         </p>
         <p class="text-lg text-slate-600 leading-relaxed">
-          Wir glauben, dass jeder Mensch die Chance verdient, von der Digitalisierung zu profitieren – unabhaengig von Alter, Vorbildung oder beruflicher Situation. Deshalb bieten wir praxisnahe, foerderbare Weiterbildungen an, die echte Karrierechancen eroeffnen.
+          Wir glauben, dass jeder Mensch die Chance verdient, von der Digitalisierung zu profitieren – unabhängig von Alter, Vorbildung oder beruflicher Situation. Deshalb bieten wir praxisnahe, förderbare Weiterbildungen an, die echte Karrierechancen eröffnen.
         </p>
       </div>
     </div>
@@ -88,7 +88,7 @@ const werte = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Unser Standort</h2>
       <p class="text-lg text-slate-500 mb-2">Digitales Bildungswerk Hildesheim</p>
-      <p class="text-slate-400 mb-8">Musterstr. 1, 31134 Hildesheim</p>
+      <p class="text-slate-400 mb-8">Wetzellplatz 2, 31137 Hildesheim</p>
       <div class="bg-slate-200 rounded-2xl h-64 flex items-center justify-center">
         <p class="text-slate-500">Kartenansicht – Google Maps Integration</p>
       </div>

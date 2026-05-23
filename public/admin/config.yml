@@ -15,22 +15,22 @@ collections:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Kurzbeschreibung", name: "description", widget: "text" }
-      - { label: "Ausfuehrliche Beschreibung", name: "longDescription", widget: "markdown" }
+      - { label: "Ausführliche Beschreibung", name: "longDescription", widget: "markdown" }
       - label: "Kategorie"
         name: "kategorie"
         widget: "select"
         options:
           - { label: "Digital Marketing", value: "digital-marketing" }
           - { label: "Programmierung & Webentwicklung", value: "programmierung" }
-          - { label: "Office & Produktivitaet", value: "office" }
+          - { label: "Office & Produktivität", value: "office" }
           - { label: "KI & Datenanalyse", value: "ki-data" }
           - { label: "Design & Medien", value: "design" }
-          - { label: "Fuehrung & Management", value: "fuehrung" }
+          - { label: "Führung & Management", value: "führung" }
       - label: "Format"
         name: "format"
         widget: "select"
         options:
-          - { label: "Praesenz", value: "praesenz" }
+          - { label: "Präsenz", value: "präsenz" }
           - { label: "Online", value: "online" }
           - { label: "Hybrid", value: "hybrid" }
       - label: "Zielgruppe"
@@ -43,8 +43,8 @@ collections:
           - { label: "Arbeitssuchende", value: "arbeitssuchende" }
       - { label: "Dauer", name: "dauer", widget: "string" }
       - { label: "Preis (EUR)", name: "preis", widget: "number", value_type: "int" }
-      - { label: "Naechster Termin", name: "naechsterTermin", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Bildungsgutschein moeglich", name: "bildungsgutschein", widget: "boolean", default: false }
+      - { label: "Nächster Termin", name: "naechsterTermin", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Bildungsgutschein möglich", name: "bildungsgutschein", widget: "boolean", default: false }
       - label: "Icon"
         name: "icon"
         widget: "select"
@@ -85,7 +85,7 @@ collections:
           - { label: "Hero Titel", name: "heroTitle", widget: "string" }
           - { label: "Hero Untertitel", name: "heroSubtitle", widget: "text" }
           - { label: "Hero CTA Text", name: "heroCta", widget: "string" }
-      - label: "Ueber uns"
+      - label: "Über uns"
         name: "ueber-uns"
         file: "src/content/seiten/ueber-uns.md"
         fields:

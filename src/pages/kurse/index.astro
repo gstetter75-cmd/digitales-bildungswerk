@@ -21,7 +21,7 @@ const iconMap: Record<string, string> = {
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Kursangebot</h1>
-      <p class="text-lg text-slate-300 max-w-2xl">Finden Sie den passenden Kurs fuer Ihre Ziele. Alle Kurse mit Praxisbezug und erfahrenen Dozenten.</p>
+      <p class="text-lg text-slate-300 max-w-2xl">Finden Sie den passenden Kurs für Ihre Ziele. Alle Kurse mit Praxisbezug und erfahrenen Dozenten.</p>
     </div>
   </section>
 
@@ -81,7 +81,7 @@ const iconMap: Record<string, string> = {
               <div class="flex items-center justify-between mb-4">
                 <span class="text-xs font-medium text-primary-300 bg-primary-500/10 px-3 py-1 rounded-full">{kategorien[kurs.kategorie]}</span>
                 {kurs.bildungsgutschein && (
-                  <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Foerderbar</span>
+                  <span class="text-xs font-medium text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Förderbar</span>
                 )}
               </div>
               <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4">
@@ -103,14 +103,14 @@ const iconMap: Record<string, string> = {
                   </span>
                   <span class="capitalize">{kurs.format}</span>
                 </div>
-                <span class="font-bold text-slate-900">{kurs.preis.toLocaleString('de-DE')} EUR</span>
+                <span class="font-bold text-slate-900">{kurs.preis.toLocaleString('de-DE')} €</span>
               </div>
             </div>
           </a>
         ))}
       </div>
 
-      <p id="no-results" class="hidden text-center text-slate-500 py-16 text-lg">Keine Kurse gefunden. Bitte aendern Sie Ihre Filterkriterien.</p>
+      <p id="no-results" class="hidden text-center text-slate-500 py-16 text-lg">Keine Kurse gefunden. Bitte ändern Sie Ihre Filterkriterien.</p>
     </div>
   </section>
 
