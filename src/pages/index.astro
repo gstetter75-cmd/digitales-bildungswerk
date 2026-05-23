@@ -64,50 +64,62 @@ const iconMap: Record<string, string> = {
 
 <BaseLayout title="Startseite" description="Digitales Bildungswerk Hildesheim – Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. AZAV-zertifiziert. Mit Bildungsgutschein möglich.">
 
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-    <div class="absolute inset-0">
-      <img src="/images/hero-collaboration.jpg" alt="" class="w-full h-full object-cover opacity-15" loading="eager" />
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/70"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-500/20 text-primary-300 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-          </svg>
-          AZAV-zertifizierter Bildungsträger
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-          Ihre digitale Zukunft<br />
-          <span class="text-primary-400">beginnt hier.</span>
-        </h1>
-        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl">
-          Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. Für Privatpersonen, Unternehmen und Arbeitssuchende in Hildesheim und online.
-        </p>
-
-        <!-- Trust Badges -->
-        <div class="flex flex-wrap gap-x-6 gap-y-2 mb-10">
-          {trustBadges.map((badge) => (
-            <span class="flex items-center gap-1.5 text-sm text-slate-300">
-              <svg class="w-4 h-4 text-primary-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-              </svg>
-              {badge}
-            </span>
-          ))}
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
-            Kurse entdecken
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+  <!-- Hero Section (Split Layout) -->
+  <section class="bg-slate-900 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center py-16 sm:py-20 lg:py-24">
+        <!-- Text -->
+        <div>
+          <div class="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-500/20 text-primary-300 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
             </svg>
-          </a>
-          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
-            Kostenlose Beratung
-          </a>
+            AZAV-zertifizierter Bildungsträger
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+            Ihre digitale Zukunft<br />
+            <span class="text-primary-400">beginnt hier.</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+            Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. Für Privatpersonen, Unternehmen und Arbeitssuchende in Hildesheim und online.
+          </p>
+
+          <!-- Trust Badges -->
+          <div class="flex flex-wrap gap-x-6 gap-y-2 mb-10">
+            {trustBadges.map((badge) => (
+              <span class="flex items-center gap-1.5 text-sm text-slate-300">
+                <svg class="w-4 h-4 text-primary-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                {badge}
+              </span>
+            ))}
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25">
+              Kurse entdecken
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all">
+              Kostenlose Beratung
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hidden lg:block">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-primary-500/20 rounded-3xl blur-2xl"></div>
+            <img
+              src="/images/hero-collaboration.jpg"
+              alt="Team bei einer digitalen Weiterbildung"
+              class="relative rounded-2xl shadow-2xl w-full h-auto object-cover"
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
     </div>
