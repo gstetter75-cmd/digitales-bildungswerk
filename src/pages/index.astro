@@ -66,34 +66,41 @@ const iconMap: Record<string, string> = {
 
   <!-- Hero Section -->
   <section class="relative bg-slate-900 overflow-hidden">
-    <!-- Mobile: Vollbild-Hintergrund -->
-    <div class="hero-mobile-bg lg:hidden">
-      <img src="/images/hero-collaboration.jpg" alt="" loading="eager" />
+    <!-- Background image (all screens) -->
+    <div class="absolute inset-0">
+      <img src="/images/hero-collaboration.jpg" alt="" loading="eager" class="w-full h-full object-cover opacity-25 lg:opacity-20" />
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-900 lg:bg-gradient-to-r lg:from-slate-900 lg:via-slate-900/95 lg:to-slate-900/40"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Decorative glow blobs (mobile) -->
+    <div class="lg:hidden absolute top-0 right-0 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+    <div class="lg:hidden absolute bottom-0 left-0 w-48 h-48 bg-primary-600/15 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center py-16 sm:py-20 lg:py-24">
         <!-- Text -->
         <div class="relative z-10">
-          <div class="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-500/20 text-primary-300 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-primary-500/15 border border-primary-400/30 text-primary-300 px-4 py-2 rounded-full text-xs font-semibold mb-6 tracking-wide uppercase">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             AZAV-zertifizierter Bildungsträger
           </div>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-            Ihre digitale Zukunft<br />
-            <span class="text-primary-400">beginnt hier.</span>
+
+          <h1 class="text-[2.6rem] leading-[1.1] sm:text-5xl lg:text-6xl font-extrabold text-white mb-5">
+            Ihre digitale<br />
+            Zukunft <span class="text-primary-400">beginnt hier.</span>
           </h1>
-          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-            Praxisnahe Weiterbildung in Programmierung, KI, Marketing und mehr. Für Privatpersonen, Unternehmen und Arbeitssuchende in Hildesheim und online.
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-lg">
+            Praxisnahe Weiterbildung in Programmierung, KI und Marketing. Für Privatpersonen, Unternehmen und Arbeitssuchende – in Hildesheim und online.
           </p>
 
-          <!-- Trust Badges -->
-          <div class="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 mb-10">
+          <!-- Trust Badges – pill chips -->
+          <div class="flex flex-wrap gap-2 mb-8">
             {trustBadges.map((badge) => (
-              <span class="flex items-center gap-1.5 text-sm text-slate-300">
-                <svg class="w-4 h-4 text-primary-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <span class="inline-flex items-center gap-1.5 bg-white/8 border border-white/12 text-slate-200 text-xs font-medium px-3 py-1.5 rounded-full">
+                <svg class="w-3.5 h-3.5 text-primary-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
                 {badge}
@@ -101,14 +108,14 @@ const iconMap: Record<string, string> = {
             ))}
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-600 active:bg-primary-700 transition-all shadow-lg shadow-primary-500/25">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="/kurse" class="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-7 py-4 rounded-2xl text-base font-bold hover:bg-primary-600 active:bg-primary-700 transition-all shadow-xl shadow-primary-500/30">
               Kurse entdecken
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </a>
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 active:bg-white/30 transition-all">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-7 py-4 rounded-2xl text-base font-semibold hover:bg-white/20 active:bg-white/30 transition-all backdrop-blur-sm">
               Kostenlose Beratung
             </a>
           </div>
@@ -128,21 +135,22 @@ const iconMap: Record<string, string> = {
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Mobile: Bild-Streifen unter dem Hero -->
-  <div class="lg:hidden">
-    <img src="/images/hero-collaboration.jpg" alt="Team bei einer digitalen Weiterbildung" class="w-full h-48 sm:h-56 object-cover" loading="eager" />
-  </div>
+    <!-- Mobile: visible image strip at bottom of section -->
+    <div class="lg:hidden relative h-52 sm:h-64 overflow-hidden">
+      <img src="/images/hero-collaboration.jpg" alt="Team bei einer digitalen Weiterbildung" class="w-full h-full object-cover object-top opacity-60" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-transparent"></div>
+    </div>
+  </section>
 
   <!-- Stats -->
   <section class="bg-white border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
         {stats.map((stat) => (
-          <div class="text-center">
-            <p class="text-3xl sm:text-4xl font-extrabold text-primary-500">{stat.value}</p>
-            <p class="text-sm text-slate-500 mt-1">{stat.label}</p>
+          <div class="flex flex-col items-center justify-center bg-slate-50 rounded-2xl px-4 py-6 border border-slate-100">
+            <p class="text-3xl sm:text-4xl font-extrabold text-primary-500 leading-none">{stat.value}</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-2 font-medium text-center">{stat.label}</p>
           </div>
         ))}
       </div>

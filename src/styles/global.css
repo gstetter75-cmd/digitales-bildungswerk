@@ -84,26 +84,9 @@
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 
-/* Mobile hero full-screen */
-@media (max-width: 1023px) {
-  .hero-mobile-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-  .hero-mobile-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.3;
-  }
-  .hero-mobile-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(15,23,42,0.7), rgba(15,23,42,0.95));
-  }
-}
+/* bg/border utilities with opacity for glassmorphism chips */
+.bg-white\/8 { background-color: rgb(255 255 255 / 0.08); }
+.border-white\/12 { border-color: rgb(255 255 255 / 0.12); }
 
 /* Sticky mobile CTA bar */
 .mobile-cta-bar {
